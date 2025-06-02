@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -23,6 +23,7 @@
       color: white;
       text-shadow: 0 2px 4px rgba(0,0,0,0.7);
       text-align: center;
+      padding: 20px;
     }
 
     .button {
@@ -50,9 +51,9 @@
 
     .instructions {
       font-size: 1rem;
-      max-width: 650px;
+      max-width: 700px;
       line-height: 1.6;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 10px;
     }
@@ -82,25 +83,29 @@
     <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Background music (played on first click) -->
-  <audio id="bg-music" loop>
+  <!-- Background music -->
+  <audio id="bg-music" autoplay muted loop>
     <source src="Edwards Unforgiven Soul.mp3" type="audio/mpeg">
   </audio>
 
   <script>
     const bgMusic = document.getElementById('bg-music');
     bgMusic.volume = 0.2;
-    let musicPlayed = false;
+
+    let unmuted = false;
 
     function handleClick() {
       const clickSound = document.getElementById('click-sound');
       clickSound.play();
 
-      if (!musicPlayed) {
-        bgMusic.play().catch((err) => console.log("Music autoplay blocked:", err));
-        musicPlayed = true;
+      // Unmute music on first click
+      if (!unmuted) {
+        bgMusic.muted = false;
+        bgMusic.play().catch(err => console.log("Autoplay error:", err));
+        unmuted = true;
       }
 
+      // Redirect after short delay
       setTimeout(() => {
         window.location.href = "https://www.bing.com/maps?q=hot+n+juicy+crawfish+las+vegas&FORM=HDRSC6&cp=36.125933%7E-115.19118&lvl=12.1";
       }, 300);
