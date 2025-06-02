@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hot-N-Juicy Hotline</title>
   <style>
     * {
@@ -11,17 +11,18 @@
       box-sizing: border-box;
     }
 
-    body, html {
+    html, body {
       height: 100%;
       font-family: Arial, sans-serif;
       background: url('https://github.com/Thugcher/HotNJuicyHotline.github.io/blob/main/image_1.jpg?raw=true') no-repeat center center fixed;
       background-size: cover;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+      text-align: center;
     }
 
     .button {
@@ -33,17 +34,27 @@
       cursor: pointer;
       color: white;
       transition: transform 0.2s ease, background-color 0.3s;
+      margin-bottom: 20px;
     }
 
     .button:hover {
-      background-color: #ff1100;
+      background-color: #cc2200;
       transform: scale(1.05);
     }
 
     .text {
-      margin-top: 20px;
       font-size: 1.2rem;
-      text-align: center;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    .instructions {
+      font-size: 1rem;
+      max-width: 650px;
+      line-height: 1.6;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
 
     audio {
@@ -54,26 +65,42 @@
 <body>
 
   <button class="button" onclick="handleClick()">CALL HOT-N-JUICY</button>
-  <p class="text">IF YOU HAVING TROUBLE WITH HOT-N-JUICY CALL THIS NUMBER.</p>
 
-  <!-- Click Sound -->
+  <p class="text">
+    IF YOU HAVING TROUBLE WITH HOT-N-JUICY CALL THIS NUMBER.
+  </p>
+
+  <div class="instructions">
+    <strong>Instructions:</strong><br/>
+    Ask for <strong>Rufio</strong>! He will help you with your problems your having.<br/>
+    Then ask for the <strong>Jewish Monkey Knuckle</strong>.<br/>
+    If they hang up, don’t worry — they will call ya back.
+  </div>
+
+  <!-- Click sound -->
   <audio id="click-sound">
     <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Background Music -->
-  <audio id="bg-music" autoplay loop>
+  <!-- Background music (played on first click) -->
+  <audio id="bg-music" loop>
     <source src="Edwards Unforgiven Soul.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Set background music volume to 20%
     const bgMusic = document.getElementById('bg-music');
     bgMusic.volume = 0.2;
+    let musicPlayed = false;
 
     function handleClick() {
-      const sound = document.getElementById('click-sound');
-      sound.play();
+      const clickSound = document.getElementById('click-sound');
+      clickSound.play();
+
+      if (!musicPlayed) {
+        bgMusic.play().catch((err) => console.log("Music autoplay blocked:", err));
+        musicPlayed = true;
+      }
+
       setTimeout(() => {
         window.location.href = "https://www.bing.com/maps?q=hot+n+juicy+crawfish+las+vegas&FORM=HDRSC6&cp=36.125933%7E-115.19118&lvl=12.1";
       }, 300);
