@@ -2,119 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hot-N-Juicy Hotline</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Oswald', sans-serif;
-      background: #0d0d0d;
-      color: #f4f4f4;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    header {
-      background-color: #ff0033;
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: url('https://github.com/Thugcher/HotNJuicyHotline.github.io/blob/main/image_1.jpg?raw=true') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .button {
+      background-color: #ff3300;
+      border: none;
       padding: 20px 40px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #fff;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      margin: 0 15px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .hero {
-      background: linear-gradient(to right, #ff0033, #ff6600);
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .menu-preview, .contact {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .menu-preview h3, .contact h3 {
       font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ff6600;
+      border-radius: 12px;
+      cursor: pointer;
+      color: white;
+      transition: transform 0.2s ease, background-color 0.3s;
     }
 
-    .menu-item {
-      margin-bottom: 15px;
+    .button:hover {
+      background-color: #ff1100;
+      transform: scale(1.05);
     }
 
-    footer {
-      background: #111;
-      color: #999;
+    .text {
+      margin-top: 20px;
+      font-size: 1.2rem;
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+    }
+
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Hot-N-Juicy Hotline</h1>
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <button class="button" onclick="handleClick()">CALL HOT-N-JUICY</button>
+  <p class="text">IF YOU HAVING TROUBLE WITH HOT-N-JUICY CALL THIS NUMBER.</p>
 
-  <section class="hero">
-    <h2>🔥 Satisfy Your Cravings. Anytime. 🔥</h2>
-    <p>From sizzling flavors to spicy vibes — Hot-N-Juicy Hotline brings the heat right to your screen. Call in. Chow down.</p>
-  </section>
+  <!-- Click Sound -->
+  <audio id="click-sound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-16.mp3" type="audio/mpeg">
+  </audio>
 
-  <section class="section menu-preview" id="menu">
-    <h3>Sample Menu</h3>
-    <div class="menu-item"><strong>Blazin' Shrimp Bowl</strong> - $12.99</div>
-    <div class="menu-item"><strong>Hotline Wings (6pc)</strong> - $9.99</div>
-    <div class="menu-item"><strong>Juicy Loaded Fries</strong> - $7.49</div>
-  </section>
+  <!-- Background Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="Edwards Unforgiven Soul.mp3" type="audio/mpeg">
+  </audio>
 
-  <section class="section contact" id="contact">
-    <h3>Call the Hotline</h3>
-    <p>📞 1-800-JUICY-24</p>
-    <p>Email: orders@hotnjuicyhotline.com</p>
-    <p>Location: Open 24/7 — Wherever you're hungry.</p>
-  </section>
+  <script>
+    // Set background music volume to 20%
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.volume = 0.2;
 
-  <footer>
-    &copy; 2025 Hot-N-Juicy Hotline. All rights reserved.
-  </footer>
+    function handleClick() {
+      const sound = document.getElementById('click-sound');
+      sound.play();
+      setTimeout(() => {
+        window.location.href = "https://www.bing.com/maps?q=hot+n+juicy+crawfish+las+vegas&FORM=HDRSC6&cp=36.125933%7E-115.19118&lvl=12.1";
+      }, 300);
+    }
+  </script>
 
 </body>
 </html>
